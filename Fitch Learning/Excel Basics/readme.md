@@ -161,3 +161,17 @@ For example, custom a type `#,##0.00,," million"` to abbreviate a number that is
 Cell style can be changed by the _Styles_ section of _Home_ menu. Click the dropdown button and click _New Cell Style_ to custom a cell style. Once you have created a set of Cell Styles, you can use these styles on multiple files for consistency across many different models. If you have saved a file with custom Cell Styles, you can merge those styles to other workbooks by selecting _Merge Styles_ from within the _Home_'s _Cell Styles_ menu, simply selecting the workbook that has the style you want to copy.
 
 ![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2019.07.37.png?raw=true)
+
+### Conditional Formatting
+
+Conditional formatting allows us to format data in a specific way if it meets certain criteria. This is useful for making certain data stand out. Conditional formatting is dynamic, so if the underlying data changes, or the criteria changes, the formatting will also change. _Conditional Formatting_ can be found under the _Home_ menu.
+
+We can also create our own conditional formatting rules. By selecting _New Rule_ in the _Conditional Formatting_ menu, we can create a rule governing the formatting of the selected cells. We can choose to...
+
+- _Format all cells based on their values_
+- _Format only cells that contain_ certain data (this leaves the formatting of the other cells unchanged)
+- _Format only top or bottom ranked values_
+- _Format only values that are above or below average_
+- _Format only unique or duplicate values_
+- _Use a formula to determine which cells to format_
+
