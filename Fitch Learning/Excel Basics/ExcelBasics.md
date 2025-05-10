@@ -53,3 +53,17 @@ Moving the order of commands around on the _Quick Access Toolbar_ is possible in
 Click the _Reset_ button below the _Customize Quick Access Toolbar_ pane to return the _QAT_ to default. You can also import or export the _Quick Access Toolbar_ settings to or from other computers.
 
 ## Manipulations on Spreadsheet Layouts
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2016.57.33.png?raw=true)
+
+### Use different worksheet views
+
+Change the layout from _Normal_, the default view, to others in _View_ menu.
+
+_Page Break Preview_ shows where the pages would break if you're printing the spreadsheet. _Page Layout_ shows where the pages would break along with any headers or footers. It is possible to also create your own _Custom Views_.
+
+### Arrange multiple Excel files
+
+The _View_ menu also offers the ability to arrange multiple MS Excel files side-by-side horizontally or vertically. We can also freeze panes or split the screen, which is useful when you have a large dataset and need to keep a row, or rows, at the top as you scroll down through the data. This can also work to keep columns visible to the left as you scroll across the data to the right.
+
+## Prepare Excel Files for Printing
