@@ -118,3 +118,5 @@ Another way to enter values of arguments is to use shortcut Ctrl+A to bring up _
 ![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.14.06.png?raw=true)
 
 You may notice that the result after the calculation is below zero &mdash; that is because `FV()` the function also indicates the **direction of cash flow**.
+
+### Number Formatting
