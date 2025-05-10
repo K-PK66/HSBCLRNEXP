@@ -67,3 +67,26 @@ _Page Break Preview_ shows where the pages would break if you're printing the sp
 The _View_ menu also offers the ability to arrange multiple MS Excel files side-by-side horizontally or vertically. We can also freeze panes or split the screen, which is useful when you have a large dataset and need to keep a row, or rows, at the top as you scroll down through the data. This can also work to keep columns visible to the left as you scroll across the data to the right.
 
 ## Prepare Excel Files for Printing
+
+Key printing options include:
+
+- Setting the page orientation
+- Custom margins
+- Scaling
+- Working with options in _Page Setup_
+
+First enter the print preview screen via File -> Print or Ctrl+F2.
+
+> For MS Excel 2007, click the Office logo button for _Print_ menu. All features are separated in 3 functions in Excel 2007 but have been integrated into one menu to choose after Office 2010.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2017.34.16.png?raw=true)
+
+By default, Office will print the active worksheet, but you can opt to print the entire workbook (file). Additionally, Office has the option to choose which orientation we'd like to print this in, portrait by default, or landscape would turn the page. Margins and other preset options can also be customized.
+
+By default, Office will print the file without scaling. You can set the scaling to _Fit Sheet on One Page_ or else for better display.
+
+In _Page Setup_ menu, orientation, along with scaling and margins, can also be adjusted. In addition to those things, you have the option to add "Custom Headers and Footers", and there are "Sheet" options as well, like printing "Gridlines", printing in "Black and White", changing the "quality", and adding "Row and column headings" to each page.
+
+Select _Print Selection_ if you want to print only the area selected.
+
+## Efficient Presentation Protocols
