@@ -120,3 +120,44 @@ Another way to enter values of arguments is to use shortcut Ctrl+A to bring up _
 You may notice that the result after the calculation is below zero &mdash; that is because `FV()` the function also indicates the **direction of cash flow**.
 
 ### Number Formatting
+
+Suppose there are several cells with `=NOW()`, a function indicating the date and time at present.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.37.13.png?raw=true)
+
+You can use **Ctrl+⇧+1~6** to make the decimal explained in different formats.
+
+- **Ctrl+⇧+1** &mdash; make the decimal to a **number style, with commas separating digits and 2 decimals**.
+- **Ctrl+⇧+2** &mdash; put the decimal into a **time** format.
+- **Ctrl+⇧+3** &mdash; put the decimal into a **date** format.
+- **Ctrl+⇧+4** &mdash; put the decimal into a **currency format with two decimals**.
+- **Ctrl+⇧+5** &mdash; put the decimal into a **percentage format without decimals**.
+- **Ctrl+⇧+6** &mdash; put teh decimal into **scientific notation**.
+
+> Ctrl+⇧+1 the shortcut in MS Excel 2007 makes the decimal to a **integer** style without decimals.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.52.20.png?raw=true)
+
+All formats above are preset ones. We can use shortcut **Ctrl+1** to enter _Format Cells_ window to custom the selected cell's format.
+
+> Right click a cell and click _Format Cells_ on the popup menu can also bring up the same dialog box.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.50.53.png?raw=true)
+
+To custom number formatting, just remember:
+
+- `0` is used to represent a numeric digit
+- `#` is used to represent a relevant numberic digit (`0` does not count as a numeric digit)
+- Semi-colons `;` separate the type of numbers that formatting gets applied to: format for positive numbers ; format for negative numbers ; format for zero ; format for text. For example, you might use a format like this: `0.00` ; `(0.00)` ; `--`. This would indicate positive numbers are shown in the form `0.00`, negative numbers are to have `()` around and zeroes are to be shown as `--`.
+
+For example, custom a type `#,##0.00,," million"` to abbreviate a number that is in millions, keeping 2 decimals.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2019.02.51.png?raw=true)
+
+### Cell styles
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2019.05.46.png)
+
+Cell style can be changed by the _Styles_ section of _Home_ menu. Click the dropdown button and click _New Cell Style_ to custom a cell style. Once you have created a set of Cell Styles, you can use these styles on multiple files for consistency across many different models. If you have saved a file with custom Cell Styles, you can merge those styles to other workbooks by selecting _Merge Styles_ from within the _Home_'s _Cell Styles_ menu, simply selecting the workbook that has the style you want to copy.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2019.07.37.png?raw=true)
