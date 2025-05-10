@@ -35,3 +35,21 @@
 - F5 &mdash; bring up _Go To_ window.
 - Ctrl + F1 &mdash; **bring up or hide the toolbars**.
 - Ctrl + F2 &mdash; quick print preview.
+
+## Quick Access Toolbar
+
+A set of tools always available for immediate use at the top left of the screen, even above the normal toolbar, shown in the image below (top left).
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/quickAccessToolbar.png?raw=true)
+
+Customize the _Quick Access Toolbar_ by adding or removing specific commands. To do this, simply select File -> Options from the ribbon to bring up the MS Excel _Options_ window. Then select _Quick Access Toolbar_ from the left-hand side.
+
+> For MS Excel 2007, select Office logo -> Excel Options to bring up the _Options_ window and select _Customize_ from the left-hand side.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/QATCustomization.png?raw=true)
+
+Moving the order of commands around on the _Quick Access Toolbar_ is possible in this window &mdash; to re-order the commands, use the up and down buttons to the right of the _Customize Quick Access Toolbar_ pane. It is possible to also add commands that are not in the ribbon, and shortcuts to macros that you have created or have available. There is an option to choose commands from _All Commands_. This allows you to see every possible command that could be added to the _Quick Access Toolbar_.
+
+Click the _Reset_ button below the _Customize Quick Access Toolbar_ pane to return the _QAT_ to default. You can also import or export the _Quick Access Toolbar_ settings to or from other computers.
+
+## Manipulations on Spreadsheet Layouts
