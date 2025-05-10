@@ -175,3 +175,4 @@ We can also create our own conditional formatting rules. By selecting _New Rule_
 - _Format only unique or duplicate values_
 - _Use a formula to determine which cells to format_
 
+## Referencings
