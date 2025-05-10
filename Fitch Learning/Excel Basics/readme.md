@@ -31,6 +31,7 @@
 - Ctrl + H &mdash; bring up _Find and Replace_ window.
 - F1 &mdash; bring up _Excel Help_ window.
 - F2 &mdash; bring the single selected cell to edit mode. (Use Esc to escape the mode)
+- F3 &mdash; bring up _Function Arguments_ window.
 - F4 &mdash; anchoring cell ref.
 - F5 &mdash; bring up _Go To_ window.
 - Ctrl + F1 &mdash; **bring up or hide the toolbars**.
@@ -90,3 +91,30 @@ In _Page Setup_ menu, orientation, along with scaling and margins, can also be a
 Select _Print Selection_ if you want to print only the area selected.
 
 ## Efficient Presentation Protocols
+
+### Formulas
+
+Suppose there is a financial calculation shown below.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2017.54.07.png?raw=true)
+
+Beyond no doubt, the estimated future value should be $100\times(1+0.08)^1=108,$ but when the present values change, we have to make another calculation if input the answer directly. Therefore, use formula for automatic calculations instead in that the formula will make the cell of answer linked with parameter cells.
+
+Use the following formula for auto calculations, and you will get the correct answer upon clicking the Enter key on the keyboard.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.03.57.png?raw=true)
+
+There is another function called `FV` that can calculate this problem. You may find the function's explanation when you type `=FV` in the cell, similar with shown below.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.07.05.png?raw=true)
+
+Double click the option or type `(` via keyboard. Office will offer you a list of parameters (arguments) compulsory for calculations. Select or type the cells you need for the function.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.09.08.png?raw=true)
+
+Another way to enter values of arguments is to use shortcut Ctrl+A to bring up _Function Arguments_ window and select the cells you need.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.12.44.png?raw=true)
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-10%20at%2018.14.06.png?raw=true)
+
+You may notice that the result after the calculation is below zero &mdash; that is because `FV()` the function also indicates the **direction of cash flow**.
