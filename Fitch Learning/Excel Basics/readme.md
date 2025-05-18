@@ -204,3 +204,32 @@ If later you decide to edit or delete a named cell or range, this can be done by
 
 The "Name Manager" shows which cell or range a name refers to, along with the cell’s value. Formulas can refer to named cells on other worksheets or even in other workbooks.
 
+## Formula Auditing
+
+### Formula Calculation Options
+
+By default, workbook calculations are set to recalculate automatically, each time a cell changes (each time you press **Enter** the key). You can change this option in the _File_ -> _Options_ -> _Formulas_ tab.   
+
+Select the following markers to learn more about the different _Calculation options_ you can apply on MS Excel. 
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2015.49.45.png?raw=true)
+
+### Formulas Auditing Tools
+
+Use _Formulas_ -> _Show Formulas_ or shortcut **Ctrl+~** to show the original formula of cells.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2015.53.45.png?raw=true)
+
+Some other tools that we often use are the ability to look at "Precedents" or "Dependents" of cells. So, this kind of shows us, it depicts how the flow of the spreadsheet looks. So, for example, if we take a look at Sales, of course, you can see the formula up at the top here, but if you want to see how this actually flows through the spreadsheet, you could go into "Formulas", and choose, for example, "Trace Precedents". 
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2015.55.51.png?raw=true)
+
+### Eliminating Circularity
+
+**Circular References** are formulas that directly, or indirectly, refer back to the cell that contains the formula. Many people regard circularity as a broken model.
+
+Use _Formulas_ -> _Error Checking_ -> _Circular References_ to check on circularity. Once detected, you should do your best to dissect the formula and determine a better method to calculate a solution that is not dependent upon referencing itself.
+
+If you wish to keep Circular References in your spreadsheet, select _File_ -> _Options_ -> _Formulas_ -> then under _Calculation options_ set the _Workbook Calculation_ option to _Enable iterative calculation_. By setting the maximum number of iterations and the amount of acceptable change, you can avoid the program from iterating indefinitely, which could result in MS Excel crashing.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2016.02.17.png?raw=true)
