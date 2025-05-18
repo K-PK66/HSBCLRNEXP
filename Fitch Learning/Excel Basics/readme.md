@@ -180,11 +180,27 @@ We can also create our own conditional formatting rules. By selecting _New Rule_
 ### Absolute & Relative Ref.s
 When intending to copy a formula, consider whether your formula’s cell references need to be relative (default) or absolute.
 
-**Absolute referencing allows the cell’s column or row (or both) to be anchored when the formula is copied and pasted somewhere else.** The keyboard shortcut to make cell references absolute is the **F4** key &mdash; pressing the key adds dollar signs "$" in front of the column and row aspect of the cell address, anchoring them in place. Pressing F4 again locks only the row or the column, instead of both.
+**Absolute referencing allows the cell’s column or row (or both) to be anchored when the formula is copied and pasted somewhere else.** The keyboard shortcut to make cell references absolute is the **F4** key &mdash; clicking the cell to be refered and pressing the key afterwards adds dollar signs "$" in front of the column and row aspect of the cell address, anchoring them in place. Pressing F4 again locks only the row or the column, instead of both.
 
 A cell reference is **by default relative**, for example: `A1`.
 
 - Pressing F4 once anchors the column and the row: `$A$1`
 - Pressing F4 again anchors only the row: `A$1`
 - Pressing F4 again anchors only the column: `$A1`
-- Pressing F4 again makes the cell relative once more: `A1`
+- Pressing F4 again makes the cell relative back: `A1`
+
+### Name A Cell / Range
+
+Naming cells or ranges in MS Excel allows reference to them by either their cell address or by their name. Naming cells can be used to anchor them, and naming cells can also make formulas more intuitive.
+
+To name a cell or a range, select your cell or range of cells and then click inside the _Name Box_ (Top left of the image illustrated below, now marked as `H8`). After selecting the cell or range of cells, go to the name box and name the data range. After inputting the name, press "Enter". This will create the name. 
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2015.34.43.png?raw=true)
+
+If later you decide to edit or delete a named cell or range, this can be done by clicking on the _Formulas_ menu -> _Name Manager_ or using shortcut **Ctrl+F3**.
+
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2015.39.29.png?raw=true)
+![](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Fitch%20Learning/Excel%20Basics/Screenshot%202025-05-18%20at%2015.41.26.png?raw=true)
+
+The "Name Manager" shows which cell or range a name refers to, along with the cell’s value. Formulas can refer to named cells on other worksheets or even in other workbooks.
+
