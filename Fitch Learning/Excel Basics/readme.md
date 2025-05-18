@@ -176,3 +176,15 @@ We can also create our own conditional formatting rules. By selecting _New Rule_
 - _Use a formula to determine which cells to format_
 
 ## Referencings
+
+### Absolute & Relative Ref.s
+When intending to copy a formula, consider whether your formula’s cell references need to be relative (default) or absolute.
+
+**Absolute referencing allows the cell’s column or row (or both) to be anchored when the formula is copied and pasted somewhere else.** The keyboard shortcut to make cell references absolute is the **F4** key &mdash; pressing the key adds dollar signs "$" in front of the column and row aspect of the cell address, anchoring them in place. Pressing F4 again locks only the row or the column, instead of both.
+
+A cell reference is **by default relative**, for example: `A1`.
+
+- Pressing F4 once anchors the column and the row: `$A$1`
+- Pressing F4 again anchors only the row: `A$1`
+- Pressing F4 again anchors only the column: `$A1`
+- Pressing F4 again makes the cell relative once more: `A1`
