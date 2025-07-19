@@ -1,3 +1,4 @@
+
 # Core Database Concepts - MySQL Workbench Skills
 
 > All SQL code blocks in this section should be taken as a whole SQL shell file &mdash; it's separated just for better understandings on the lines' functions and output.
@@ -532,7 +533,7 @@ Hockey stick,Ice Hockey,18
 
 **Aggregate functions** in SQL allow its users to perform calculations on sets of rows and return a single value. They are commonly used to summarize data and provide insights into the dataset.
 
-`COUNT()` counts the number of rows that match a specific criterion. Take `pub.sql` as an example (get the file from [this link](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Neueda%20Core%20Tech%20Training/SQL%20skills/pub.sql)) &mdash; shell command `SELECT COUNT(*) AS total_authors FROM authors;` will return a set with the number of authors, 5.
+`COUNT()` counts the number of rows that match a specific criterion. Take `pub.sql` from [the linked zip file](https://neueda.conygre.com/material/sql/sql.zip) as an example &mdash; shell command `SELECT COUNT(*) AS total_authors FROM authors;` will return a set with the number of authors, 5.
 
 `SUM()` calculates the sum of a numeric column.For `pub.sql`, shell command `SELECT SUM(sales) AS total_sales FROM sales_data;` will return 24500, the total sales amount.
 
@@ -751,7 +752,7 @@ SELECT type, COUNT(title) AS title_count, MIN(price) AS min_price, MAX(price) AS
 SELECT country, COUNT(pub_name) AS publisher_count FROM publishers GROUP BY country HAVING publisher_count > 2 AND country LIKE ('U%');
 ```
 
-> Practice: Suppose there is a database where tables are created by [this linked MySQL file](https://github.com/K-PK66/HSBCLRNEXP/blob/main/Neueda%20Core%20Tech%20Training/SQL%20skills/task_airline_data.sql). Obtain the queries required in the note block at the bottom of the block.
+> Practice: Suppose there is a database where tables are created by [this linked MySQL file](https://raw.githubusercontent.com/K-PK66/HSBCLRNEXP/refs/heads/main/Core%20Tech/task_airline_data.sql). Obtain the queries required in the note block at the bottom of the block.
 
 ```sql
 -- 1. Extract and display the domain names from email addresses.
