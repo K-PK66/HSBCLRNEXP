@@ -31,21 +31,21 @@ CSS can be categorized into 3 types &mdash;
 
 - **External**: applicable to entire page wherever it's referenced
 - **Internal**: applicable to entire page wherever it's written
-- **Inline**: 
+- **Inline**: applicable only to contents with the tag
 
-Think about the following code in a HTML document.
+Think about the following code in a HTML document. This could be an example of internal CSS in that it uses CSS inside the document.
 
 ```html
 <head>
     <style>
-        body{
+        body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 20px;
             padding: 20px;
             background-color: #f4f4f4;
         }
-        h2{
+        h2 {
             color: #333;
         }
     </style>
