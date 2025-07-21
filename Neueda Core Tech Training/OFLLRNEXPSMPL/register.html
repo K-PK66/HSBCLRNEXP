@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        @import url('my.css');
+        body {
+            font-family: 'A-OTF Shin Go Pro R', sans-serif;
+            background-color: seagreen;
+            color: white;
+        }
+        h1{
+            font-family: 'A-OTF Shin Go Pro H', sans-serif;
+            text-align: center;
+        }
+        h2{
+            font-family: 'A-OTF Shin Go Pro B', sans-serif;
+        }
+        h3{
+            font-family: 'A-OTF Shin Go Pro DB', sans-serif;
+        }
+        h4{
+            font-family: 'A-OTF Shin Go Pro M', sans-serif;
+        }
+    </style>
+    <script>
+        var username = "";
+
+        function validateForm() {
+            // Clear previous messages
+            var err_msg = document.getElementById("err_msg");
+            err_msg.textContent = "";
+
+            // Get form values
+            username = document.getElementById("username").value;
+            var email = document.getElementById("e-mail").value;
+            var password = document.getElementById("pwd").value;
+            var confirmPassword = document.getElementById("confirm-pwd").value;
+
+            let valid = true;
+
+            // Validate required fields
+            if (username === "" || email === "" || password === "" || confirmPassword === "") {
+                err_msg.textContent = "All fields are required.";
+                return false;
+            }
+
+            // Validate password length
+            if (password.length < 8) {
+                err_msg.textContent = "Password must be at least 8 characters long.";
+                valid = false;
+            }
+
+            // Validate password match
+            if (confirmPassword !== password) {
+                err_msg.textContent = "Passwords do not match.";
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        function readName() {
+            username = document.getElementById("username").value;
+            err_msg.textContent("Welcome, " + username);  // Fixed variable name (usr -> username)
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>User Registration</h1>
+    <form action="register.html" method="get" onsubmit="return validateForm();">
+        <table align="center">
+            <tr>
+                <td>
+                    <label for="username">Username: </label>
+                </td>
+                <td>
+                    <input type="text" id="username" name="username" title="Please enter your username">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="e-mail">E-mail: </label>
+                </td>
+                <td>
+                    <input type="email" id="e-mail" name="e-mail" title="Please enter your email address" placeholder="your@email.com">
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password: </label>
+                </td>
+                <td>
+                    <input type="password" id="pwd" name="Password" required  title="Please enter your password"
+                        placeholder="Enter your password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="confirm-password">Confirm Password: </label>
+                </td>
+                <td>
+                    <input type="password" id="confirm-pwd" name="confirm-password" required title="Please re-enter your password" placeholder="Re-enter your password"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Sign Up"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><span id="err_msg" style="color: yellow;"></span></td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</body>
+
+</html>
