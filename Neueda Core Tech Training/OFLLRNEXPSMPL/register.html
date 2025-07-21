@@ -10,6 +10,11 @@
             font-family: 'A-OTF Shin Go Pro R', sans-serif;
             background-color: seagreen;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
         }
         h1{
             font-family: 'A-OTF Shin Go Pro H', sans-serif;
@@ -71,7 +76,7 @@
 </head>
 
 <body>
-    <h1>User Registration</h1>
+    <h1>User Registration　ユーザー登録</h1>
     <form action="register.html" method="get" onsubmit="return validateForm();">
         <table align="center">
             <tr>
@@ -114,11 +119,11 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><span id="err_msg" style="color: yellow;"></span></td>
+                <td colspan="2" style="text-align: center;"><span id="err_msg" style="color: yellow;"></span></td>
             </tr>
         </table>
     </form>
-    </div>
+    <p></p>
 </body>
 
 </html>
