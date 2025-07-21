@@ -70,6 +70,46 @@ A scripting language usually embedded directly (or linked) into HTML pages. It's
 
 > Code blocks in this section will be **Raw** ones in Javascript.
 
+### NodeJS in Brief
+
+Javascript was largely a technology used in the client side elements of web applications up until 2009. However, the release of NodeJS in 2009 provided a framework that allowed server side applications to also be developed using Javascript, meaning that an application could be entirely-built using Javascript from then on.
+
+NodeJS uses Google V8 Javascript Engine &mdash; its architecture is event driven and the I/O can be asynchronous, which is ideal for building ***scalable*** and performant Web applications. The framework allows you to create additional libraries and then these can be shared and managed using the **Node Package Manager** (or **NPM**).
+
+To install NodeJS, download files from [the official site for stable version](https://nodejs.org/en/download/stable).
+
+#### Common JavaScript Functions
+
+| Function             | Category        | Description                                              | Example Usage                     |
+|----------------------|-----------------|----------------------------------------------------------|-----------------------------------|
+| `alert()`            | Dialog / UI     | Shows an alert dialog with a message.                    | `alert("Hello!")`                 |
+| `prompt()`           | Dialog / UI     | Asks user for input.                                     | `let name = prompt("Enter name")` |
+| `confirm()`          | Dialog / UI     | Displays OK/Cancel dialog, returns true or false.        | `let result = confirm("Continue?")` |
+| `parseInt()`         | Conversion      | Converts string to integer.                              | `parseInt("123")`                 |
+| `parseFloat()`       | Conversion      | Converts string to floating point number.                | `parseFloat("3.14")`              |
+| `isNaN()`            | Validation      | Returns true if the value is NaN.                        | `isNaN("abc")`                    |
+| `isFinite()`         | Validation      | Checks if a number is finite.                            | `isFinite(123)`                   |
+| `eval()`             | Execution       | Executes a string as JavaScript code. (Use with caution) | `eval("2 + 2")`                   |
+| `setTimeout()`       | Timing          | Runs function after delay (once).                        | `setTimeout(() => alert("Hi"), 1000)` |
+| `setInterval()`      | Timing          | Runs function repeatedly after delay.                    | `setInterval(myFunction, 2000)`   |
+| `clearTimeout()`     | Timing          | Cancels a timeout set with setTimeout.                   | `clearTimeout(timerId)`           |
+| `clearInterval()`    | Timing          | Cancels an interval set with setInterval.                | `clearInterval(intervalId)`       |
+| `Date()`             | Date/Time       | Returns current date/time.                               | `let now = new Date()`            |
+| `Math.random()`      | Math            | Returns a random number between 0 and 1.                 | `Math.random()`                   |
+| `Math.floor()`       | Math            | Rounds down to nearest integer.                          | `Math.floor(4.9)`                 |
+| `Math.ceil()`        | Math            | Rounds up to nearest integer.                            | `Math.ceil(4.1)`                  |
+| `Math.round()`       | Math            | Rounds to the nearest integer.                           | `Math.round(4.5)`                 |
+| `Math.max()`         | Math            | Returns largest of the numbers.                          | `Math.max(1, 5, 3)`               |
+| `Math.min()`         | Math            | Returns smallest of the numbers.                         | `Math.min(1, 5, 3)`               |
+| `Number()`           | Conversion      | Converts value to number.                                | `Number("45")`                    |
+| `String()`           | Conversion      | Converts value to string.                                | `String(45)`                      |
+| `Boolean()`          | Conversion      | Converts value to boolean.                               | `Boolean(0)`                      |
+| `typeof` (operator)  | Type Checking   | Returns type of a variable or value.                     | `typeof 123`                      |
+| `Array.isArray()`    | Array Utility   | Checks if a value is an array.                           | `Array.isArray([1, 2, 3])`        |
+| `Object.keys()`      | Object Utility  | Returns array of object’s keys.                          | `Object.keys({a: 1, b: 2})`       |
+
+## Embedded Javascript in HTML
+
 We can embed a javascript script by `<script></script>` tag in the `<head>` section.
 
 ```html
@@ -79,6 +119,67 @@ window.onload = function() {
 };
 </script>
 ```
+
+Before digging into how javascript can function in a HTML document, let's started by making what an HTML document may contain clear.
+
+### HTML Making
+
+As mentioned in [the overview chapter](#html-the-uncompilable-document), an HTML document is a compound of HTML document itself and CSS file (if any) which features elements defined by tags. Thus, the process of making HTML files is essentially that of defining different elements and combining them into one single file.
+
+> Think about a very simple webpage with title, featuring various headings, images and paragraphs. What will the webpage contain and how will they be styled?
+
+Normally we use tag `<h1></h1>`, `<h2></h2>`, `<h3></h3>`, ..., `<h6></h6>` to define headings. The smaller number the `h` is with, the higher priority the headings created would be. Use `<img src="url_of_image" alt="name_of_image">` the tag to keep an image in the webpage and `<p></p>` the tag pair to define a paragraph. We can add inline CSS to the tags to keep tags in different styles, shown in the example below.
+
+```html
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>About Us</h1>
+<img src="https://railgallery.ru/photo/02/86/66/286664.jpg" alt="SS9"/>
+<p>Xi'an Metro (Loop) Line 8, also named Xi'an Metro Line 8 or Xi'an Metro Loop Line, is a loop line of Xi'an Metro built in 2024.</p>
+<div style="float: right;">
+    <a href="register.html" style="color: white;">Sign Up Now　ユーザー登録</a><br>
+    <a href="infoRecord.html" style="color: white;">Information Record　情報レコード</a><br>
+</div>
+</body>
+</html>
+```
+
+It's also possible to define the webpage template in `<head>` section, using internal CSS. Remember: **Inline CSS will overwrite the tagged paragraph, which was formally styled as instructed by in- or ex-ternal CSS.**
+
+Now look at the image in the webpage &mdash; it's possible for webpage readers to conduct the zoom-in or -out operations upon leaving the mouse cursor on the image by using event reactions defined by Javascript from developers, shown below.
+
+```html
+<!-- about.html -->
+<head>
+    <!-- ... -->
+    <style>
+        img{
+            width: "200px";
+            float: right;
+        }
+    </style>
+    <script>
+        function imgBig(img){
+            img.style.width = 300;
+        }
+        function imgSmall(img){
+            img.style.width = 200;
+        }
+    </script>
+</head>
+<body>
+    <!-- ... -->
+    <img src="https://railgallery.ru/photo/02/86/66/286664.jpg" alt="SS9" onmouseover=imgBig(this) onmouseout=imgSmall(this) />
+</body>
+```
+
+`onmouseover`, along with `onmouseout`, is an **event** of the webpage. It can also be defined by `img.onmouseover(){}` or `img.onmouseout(){}`, and there're still other events available for corresponding javascript functions, as is listed below.
 
 | Event            | Category              | Description                                                   | Example Syntax                         |
 |------------------|-----------------------|---------------------------------------------------------------|----------------------------------------|
@@ -110,7 +211,150 @@ window.onload = function() {
 | dragover        | Drag Events          | Fires when dragging over a valid target.                      | `element.ondragover = function() {}`   |
 | drop            | Drag Events          | Fires when an item is dropped.                                | `element.ondrop = function() {}`       |
 
-### DOM Access and Manipulation Functions
+> Now thinking about a sign-up page for a site &mdash; what should it contain and how can it work?
+
+For a sign-up page of a site, it should at least contain user's name, e-mail address and password. Some pages may even ask a user to re-enter the password and limit the length of the password to more than 8. This in turn highlights the role of scripts that is capable of validating the *form* and returning messages on where the invalid entry is, if any.
+
+```html
+<!-- register.html -->
+ <html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        @import url('my.css');
+        body {
+            font-family: 'A-OTF Shin Go Pro R', sans-serif;
+            background-color: seagreen;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+        }
+        h1{
+            font-family: 'A-OTF Shin Go Pro H', sans-serif;
+            text-align: center;
+        }
+        h2{
+            font-family: 'A-OTF Shin Go Pro B', sans-serif;
+        }
+        h3{
+            font-family: 'A-OTF Shin Go Pro DB', sans-serif;
+        }
+        h4{
+            font-family: 'A-OTF Shin Go Pro M', sans-serif;
+        }
+    </style>
+    <script>
+        var username = "";
+
+        function validateForm() {
+            // Clear previous messages
+            var err_msg = document.getElementById("err_msg");
+            err_msg.textContent = "";
+
+            // Get form values
+            username = document.getElementById("username").value;
+            var email = document.getElementById("e-mail").value;
+            var password = document.getElementById("pwd").value;
+            var confirmPassword = document.getElementById("confirm-pwd").value;
+
+            let valid = true;
+
+            // Validate required fields
+            if (username === "" || email === "" || password === "" || confirmPassword === "") {
+                err_msg.textContent = "All fields are required.";
+                return false;
+            }
+
+            // Validate password length
+            if (password.length < 8) {
+                err_msg.textContent = "Password must be at least 8 characters long.";
+                valid = false;
+            }
+
+            // Validate password match
+            if (confirmPassword !== password) {
+                err_msg.textContent = "Passwords do not match.";
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        function readName() {
+            username = document.getElementById("username").value;
+            err_msg.textContent("Welcome, " + username);  // Fixed variable name (usr -> username)
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>User Registration　ユーザー登録</h1>
+    <form action="register.html" method="get" onsubmit="return validateForm();">
+        <table align="center">
+            <tr>
+                <td>
+                    <label for="username">Username: </label>
+                </td>
+                <td>
+                    <input type="text" id="username" name="username" title="Please enter your username">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="e-mail">E-mail: </label>
+                </td>
+                <td>
+                    <input type="email" id="e-mail" name="e-mail" title="Please enter your email address" placeholder="your@email.com">
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password: </label>
+                </td>
+                <td>
+                    <input type="password" id="pwd" name="Password" required  title="Please enter your password"
+                        placeholder="Enter your password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="confirm-password">Confirm Password: </label>
+                </td>
+                <td>
+                    <input type="password" id="confirm-pwd" name="confirm-password" required title="Please re-enter your password" placeholder="Re-enter your password"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Sign Up"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><span id="err_msg" style="color: yellow;"></span></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+```
+
+The introduction of `<input></input>` tags will enable the webpage viewer to fill in blanks for information and the application of `<table></table>` tags will help contents keep aligned. You may have noticed at `document.getElementById($id$)` the function &mdash; it will get the value of the input under the `id` you give.
+
+> What is the difference between `id` and `class`, the sub-tags?
+
+The answer of the question above is not obvious unless looking into `CSS`. For an element whose `id` is `copyright`, we should use `#copyright` to clarify the CSS; for that with the `class` is `copyright`, we should use `.copyright` to make its CSS clear.
+
+There are multiple functions available to get different values, listed below. Please choose proper functions for proper scenario.
+
+#### DOM Access and Manipulation Functions
 
 | Function                          | Category           | Description                                              | Example Usage                    |
 |-----------------------------------|--------------------|----------------------------------------------------------|----------------------------------|
@@ -130,32 +374,218 @@ window.onload = function() {
 | `element.innerHTML`               | DOM Content Access | Gets or sets HTML content inside an element.             | `element.innerHTML = "<p>Hello</p>"` |
 | `element.textContent`             | DOM Content Access | Gets or sets only text content inside an element.        | `element.textContent = "Hello"`  |
 
-### Common JavaScript Functions
+> **Practice:** Build a webpage that prompts page viewers to give their names, ages, addresses, genders (M, F & Prefer not to Say only), cities, postal codes (or zipcodes) and hobbies. The result of the registry should output in another webpage.
 
-| Function             | Category        | Description                                              | Example Usage                     |
-|----------------------|-----------------|----------------------------------------------------------|-----------------------------------|
-| `alert()`            | Dialog / UI     | Shows an alert dialog with a message.                    | `alert("Hello!")`                 |
-| `prompt()`           | Dialog / UI     | Asks user for input.                                     | `let name = prompt("Enter name")` |
-| `confirm()`          | Dialog / UI     | Displays OK/Cancel dialog, returns true or false.        | `let result = confirm("Continue?")` |
-| `parseInt()`         | Conversion      | Converts string to integer.                              | `parseInt("123")`                 |
-| `parseFloat()`       | Conversion      | Converts string to floating point number.                | `parseFloat("3.14")`              |
-| `isNaN()`            | Validation      | Returns true if the value is NaN.                        | `isNaN("abc")`                    |
-| `isFinite()`         | Validation      | Checks if a number is finite.                            | `isFinite(123)`                   |
-| `eval()`             | Execution       | Executes a string as JavaScript code. (Use with caution) | `eval("2 + 2")`                   |
-| `setTimeout()`       | Timing          | Runs function after delay (once).                        | `setTimeout(() => alert("Hi"), 1000)` |
-| `setInterval()`      | Timing          | Runs function repeatedly after delay.                    | `setInterval(myFunction, 2000)`   |
-| `clearTimeout()`     | Timing          | Cancels a timeout set with setTimeout.                   | `clearTimeout(timerId)`           |
-| `clearInterval()`    | Timing          | Cancels an interval set with setInterval.                | `clearInterval(intervalId)`       |
-| `Date()`             | Date/Time       | Returns current date/time.                               | `let now = new Date()`            |
-| `Math.random()`      | Math            | Returns a random number between 0 and 1.                 | `Math.random()`                   |
-| `Math.floor()`       | Math            | Rounds down to nearest integer.                          | `Math.floor(4.9)`                 |
-| `Math.ceil()`        | Math            | Rounds up to nearest integer.                            | `Math.ceil(4.1)`                  |
-| `Math.round()`       | Math            | Rounds to the nearest integer.                           | `Math.round(4.5)`                 |
-| `Math.max()`         | Math            | Returns largest of the numbers.                          | `Math.max(1, 5, 3)`               |
-| `Math.min()`         | Math            | Returns smallest of the numbers.                         | `Math.min(1, 5, 3)`               |
-| `Number()`           | Conversion      | Converts value to number.                                | `Number("45")`                    |
-| `String()`           | Conversion      | Converts value to string.                                | `String(45)`                      |
-| `Boolean()`          | Conversion      | Converts value to boolean.                               | `Boolean(0)`                      |
-| `typeof` (operator)  | Type Checking   | Returns type of a variable or value.                     | `typeof 123`                      |
-| `Array.isArray()`    | Array Utility   | Checks if a value is an array.                           | `Array.isArray([1, 2, 3])`        |
-| `Object.keys()`      | Object Utility  | Returns array of object’s keys.                          | `Object.keys({a: 1, b: 2})`       |
+```html
+<!-- infoRecord.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('my.css');
+    
+        body {
+            font-family: 'A-OTF Shin Go Pro R', sans-serif;
+            background-color: seagreen;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+        }
+    
+        h1 {
+            font-family: 'A-OTF Shin Go Pro H', sans-serif;
+            text-align: center;
+        }
+    
+        h2 {
+            font-family: 'A-OTF Shin Go Pro B', sans-serif;
+        }
+    
+        h3 {
+            font-family: 'A-OTF Shin Go Pro DB', sans-serif;
+        }
+    
+        h4 {
+            font-family: 'A-OTF Shin Go Pro M', sans-serif;
+        }
+
+        .copyright{
+            text-align: center;
+            font-size: .8em;
+            color: #ccc;
+        }
+    </style>
+    <script>
+        var username = "";
+
+        function validateForm() {
+            // Clear previous messages
+            var err_msg = document.getElementById("err_msg");
+            err_msg.textContent = "";
+
+            // Get form values
+            username = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var postal = document.getElementById("zipcode").value;
+            var address = document.getElementById("address").value;
+
+            let valid = true;
+
+            // Validate required fields
+            if (username === "" || age === "" || postal === "" || address === "") {
+                err_msg.textContent = "All fields are required.";
+                return false;
+            }
+
+            // Validate password length
+            if (postal.length !== 6) {
+                err_msg.textContent = "Invalid postal code. It must be 6 digits.";
+                valid = false;
+            }
+
+            // Validate password match
+            if (!(age >= 10 && age <= 100)) {
+                err_msg.textContent = "You are either too young or too old to make the record.";
+                valid = false;
+            }
+            return valid;
+        }
+    </script>
+    <title>Info Record of User</title>
+</head>
+
+<body>
+    <h1>User Information Record</h1>
+    <form action="resultOfInfoRecord.html" method="get" onsubmit="return validateForm();">
+        <table align="center">
+            <tr>
+                <td>
+                    <label for="username">Name: </label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="username" required title="Please enter your name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="age">Age: </label>
+                </td>
+                <td>
+                    <input type="text" id="age" name="age" required title="Please enter your age" placeholder="Between 10 & 100">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="gender">Gender: </label>
+                </td>
+                <td>
+                    <input type="radio" id="gender-m" name="gender" value="M"><label for="gender-m">Male</label>
+                    <input type="radio" id="gender-f" name="gender" value="F"><label for="gender-f">Female</label>
+                    <input type="radio" id="gender-x" name="gender" value="X" title="Prefer Not to Say">
+                    <label for="gender-x">Prefer Not to Say</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address">Address: </label>
+                </td>
+                <td>
+                    <input type="text" id="address" name="address" required placeholder="District, Housing Estates">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="city">City: </label>
+                </td>
+                <td>
+                    <select id="city" name="city">
+                        <option value="">Select City</option>
+                        <option value="XAN">Xi'an, SN, P. R. China</option>
+                        <option value="SHH">Shanghai, P. R. China</option>
+                        <option value="CDU">Chengdu, SC, P. R. China</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zipcode">Postal Code: </label>
+                </td>
+                <td>
+                    <input type="text" id="zipcode" name="zipcode" required placeholder="100000">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                    <label for="hobby">Preferences: </label>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="hobby-a" name="hobby-a">
+                                <label for="hobby-a">Reading</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-b" name="hobby-b" >
+                                <label for="hobby-b">Films</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-c" name="hobby-c" >
+                                <label for="hobby-c">Filming</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="hobby-a" name="hobby-a" >
+                                <label for="hobby-d">Music</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-b" name="hobby-b" >
+                                <label for="hobby-e">Outdoor</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-c" name="hobby-c" >
+                                <label for="hobby-f">Indoor</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="hobby-a" name="hobby-a" >
+                                <label for="hobby-g">Sports</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-b" name="hobby-b" >
+                                <label for="hobby-h">Coding</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-c" name="hobby-c" >
+                                <label for="hobby-i">Cooking</label>
+                            </td>
+                        </tr>
+                    
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Sign Up"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><span id="err_msg" style="color: yellow;"></span></td>
+            </tr>
+        </table>
+    </form>
+    <p id="copyright" class="copyright">
+        &copy; 2025 Pontsyne P GU. All rights reserved.
+    </p>
+</body>
+
+</html>
+```
