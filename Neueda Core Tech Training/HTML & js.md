@@ -2,9 +2,9 @@
 
 ## Overview
 
-### HTML
+### HTML, the Uncompilable Document
 
-HTML4 first emerged in 1999, which is standardized by the Worldwide Web Consortium (or W3C). HTML5 launched in 2007 and introduced several new features (e.g. native audio & video, new input controls, graphics, geolocation, web sockets, web stroage, web workers and Ajax improvements), simplifying DOCTYPE declarations.
+HTML4 first emerged in 1999, which is standardized by the Worldwide Web Consortium (or W3C). HTML5 launched in 2007 and introduced several new features (e.g. native audio & video, new input controls, graphics, geolocation, web sockets, web stroage, web workers and Ajax improvements), simplifying `DOCTYPE` declarations.
 
 A common structure in HTML5 is as follows, which has been enable to render a complete `.html` page. `<head></head>`, the tags, represent the head elements which contains the meta data of the HTML document. `<body></body>` the tags stand for visible webpage content.
 
@@ -33,7 +33,7 @@ CSS can be categorized into 3 types &mdash;
 - **Internal**: applicable to entire page wherever it's written
 - **Inline**: applicable only to contents with the tag
 
-Think about the following code in a HTML document. This could be an example of internal CSS in that it uses CSS inside the document and will apply to all `body` and `h2` elements in the page.
+Think about the following code in a HTML document. This could be an example of internal CSS in that it uses CSS inside the document and will apply to all `body` and `h2` elements in the page &mdash; for external CSS, use tag `<link rel='' href=''>` in the `<head>` section.
 
 ```html
 <head>
@@ -52,13 +52,15 @@ Think about the following code in a HTML document. This could be an example of i
 </head>
 ```
 
-For Inline CSS, the most commonly-used CSS methods for me myself, can customize elements separately.
+For Inline CSS, the most commonly-used CSS methods for me myself, separate element customization can be reached it will also overwrite CSS styles defined by the internal ones.
 
 ```html
 <h2 style="color: red;">Headings 2</h2>
 ```
 
-### Javascript
+> Do **NOT** write HTML contents in External CSS file.
+
+### Javascript, the Programming Language
 
 A scripting language usually embedded directly (or linked) into HTML pages. It's used to make HTML pages interactive, react to events, update the content of the HTML document and validate data before it's submitted to a server in order to save unnecessary roundtrips.
 
