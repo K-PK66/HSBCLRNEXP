@@ -33,7 +33,7 @@ CSS can be categorized into 3 types &mdash;
 - **Internal**: applicable to entire page wherever it's written
 - **Inline**: applicable only to contents with the tag
 
-Think about the following code in a HTML document. This could be an example of internal CSS in that it uses CSS inside the document.
+Think about the following code in a HTML document. This could be an example of internal CSS in that it uses CSS inside the document and will apply to all `body` and `h2` elements in the page.
 
 ```html
 <head>
@@ -50,6 +50,12 @@ Think about the following code in a HTML document. This could be an example of i
         }
     </style>
 </head>
+```
+
+For Inline CSS, the most commonly-used CSS methods for me myself, can customize elements separately.
+
+```html
+<h2 style="color: red;">Headings 2</h2>
 ```
 
 ### Javascript
