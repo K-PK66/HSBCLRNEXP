@@ -12,6 +12,7 @@ A common structure in HTML5 is as follows, which has been enable to render a com
 <!DOCTYPE html>
 <html>
     <head>
+        <style></style>
         <meta charset="utf-8">
         <title>Title</title>
     </head>
@@ -25,6 +26,31 @@ A common structure in HTML5 is as follows, which has been enable to render a com
 ### CSS
 
 Having been introduced in HTML4, CSS allows developers to define styles for HTML elements.
+
+CSS can be categorized into 3 types &mdash;
+
+- **External**: applicable to entire page wherever it's referenced
+- **Internal**: applicable to entire page wherever it's written
+- **Inline**: 
+
+Think about the following code in a HTML document.
+
+```html
+<head>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2{
+            color: #333;
+        }
+    </style>
+</head>
+```
 
 ### Javascript
 
