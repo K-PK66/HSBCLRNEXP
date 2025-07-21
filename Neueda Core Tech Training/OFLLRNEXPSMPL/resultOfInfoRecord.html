@@ -1,0 +1,10 @@
+<script>
+    const params = new URLSearchParams(window.location.search);
+    document.write("Name: " + params.get("username") + "<br>");
+    document.write("Age: " + params.get("age") + "<br>");
+    document.write("City: " + params.get("city") + "<br>");
+    document.write("Gender: " + params.get("gender") + "<br>");
+    document.write("Address: " + params.get("address") + "<br>");
+    document.write("Postal Code: " + params.get("zipcode") + "<br>");
+    // ...display other fields as needed
+</script>

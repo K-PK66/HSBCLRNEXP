@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('my.css');
+    
+        body {
+            font-family: 'A-OTF Shin Go Pro R', sans-serif;
+            background-color: seagreen;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+        }
+    
+        h1 {
+            font-family: 'A-OTF Shin Go Pro H', sans-serif;
+            text-align: center;
+        }
+    
+        h2 {
+            font-family: 'A-OTF Shin Go Pro B', sans-serif;
+        }
+    
+        h3 {
+            font-family: 'A-OTF Shin Go Pro DB', sans-serif;
+        }
+    
+        h4 {
+            font-family: 'A-OTF Shin Go Pro M', sans-serif;
+        }
+    </style>
+    <script>
+        var username = "";
+
+        function validateForm() {
+            // Clear previous messages
+            var err_msg = document.getElementById("err_msg");
+            err_msg.textContent = "";
+
+            // Get form values
+            username = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var postal = document.getElementById("zipcode").value;
+            var address = document.getElementById("address").value;
+
+            let valid = true;
+
+            // Validate required fields
+            if (username === "" || age === "" || postal === "" || address === "") {
+                err_msg.textContent = "All fields are required.";
+                return false;
+            }
+
+            // Validate password length
+            if (postal.length !== 6) {
+                err_msg.textContent = "Invalid postal code. It must be 6 digits.";
+                valid = false;
+            }
+
+            // Validate password match
+            if (!(age >= 10 && age <= 100)) {
+                err_msg.textContent = "You are either too young or too old to make the record.";
+                valid = false;
+            }
+            return valid;
+        }
+    </script>
+    <title>Info Record of User</title>
+</head>
+
+<body>
+    <h1>User Information Record</h1>
+    <form action="result.html" method="get" onsubmit="return validateForm();">
+        <table align="center">
+            <tr>
+                <td>
+                    <label for="username">Name: </label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="username" required title="Please enter your name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="age">Age: </label>
+                </td>
+                <td>
+                    <input type="text" id="age" name="age" required title="Please enter your age" placeholder="Between 10 & 100">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="gender">Gender: </label>
+                </td>
+                <td>
+                    <input type="radio" id="gender-m" name="gender" value="M"><label for="gender-m">Male</label>
+                    <input type="radio" id="gender-f" name="gender" value="F"><label for="gender-f">Female</label>
+                    <input type="radio" id="gender-x" name="gender" value="X" title="Prefer Not to Say">
+                    <label for="gender-x">Prefer Not to Say</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address">Address: </label>
+                </td>
+                <td>
+                    <input type="text" id="address" name="address" required placeholder="District, Housing Estates">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="city">City: </label>
+                </td>
+                <td>
+                    <select id="city" name="city">
+                        <option value="">Select City</option>
+                        <option value="XAN">Xi'an, SN, P. R. China</option>
+                        <option value="SHH">Shanghai, P. R. China</option>
+                        <option value="CDU">Chengdu, SC, P. R. China</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zipcode">Postal Code: </label>
+                </td>
+                <td>
+                    <input type="text" id="zipcode" name="zipcode" required placeholder="100000">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">
+                    <label for="hobby">Preferences: </label>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="hobby-a" name="hobby-a">
+                                <label for="hobby-a">Reading</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-b" name="hobby-b" >
+                                <label for="hobby-b">Films</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-c" name="hobby-c" >
+                                <label for="hobby-c">Filming</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="hobby-a" name="hobby-a" >
+                                <label for="hobby-d">Music</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-b" name="hobby-b" >
+                                <label for="hobby-e">Outdoor</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-c" name="hobby-c" >
+                                <label for="hobby-f">Indoor</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="hobby-a" name="hobby-a" >
+                                <label for="hobby-g">Sports</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-b" name="hobby-b" >
+                                <label for="hobby-h">Coding</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="hobby-c" name="hobby-c" >
+                                <label for="hobby-i">Cooking</label>
+                            </td>
+                        </tr>
+                    
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Sign Up"><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><span id="err_msg" style="color: yellow;"></span></td>
+            </tr>
+        </table>
+    </form>
+    <p></p>
+</body>
+
+</html>
