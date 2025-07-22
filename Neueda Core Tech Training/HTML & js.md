@@ -96,7 +96,9 @@ To install NodeJS, download files for all OSs from [the official site for stable
 
 ### Basic NodeJS
 
-All NodeJS files will take the following steps above all &mdash;
+#### Web Server
+
+Initialize the NodeJS workspace by `npm init -y` first. All NodeJS files will take the following steps above all &mdash;
 
 **Step 1** &mdash; import the HTTP module.
 
@@ -130,6 +132,8 @@ server.listen(PORT, () => {
 > Do **NOT** break line before & after `=>`, the *equal to* sign.
 
 Run codes combining the 3 steps above and check `http://localhost:3000` as instructed by the terminal. The site will feature a message saying `Hello from node.js`, meaning that the JS file has been completely configured.
+
+The execution of example above will be finished when HTTP requests come in on port 3000.
 
 > Refreshing the website will **NOT** change anything in the page &mdash; you need to restart the server first after modification to the JS file by stop running the file-running in terminal. To avoid the problem, try install `nodemon` by command `npm install -g nodemon` in terminal &mdash; it will make corresponding changes to the server when changes are made in JS file itself.
 
@@ -167,6 +171,39 @@ const server = http.createServer((req, res) => {
 ```
 
 Then return to *Step 3* above. The localhost page will feature `index.html`, the HTML file we expect.
+
+The JS steps to read files is, beyond doubts, not meaningless &mdash; it's of great help when seeking to make redirects for some occasions where the developers forgot to create `index.html`, the default and **compulsory** file of a site.
+
+#### JSON API Server
+
+**JavaScript Object Notation** (or **JSON**) is a lightweight data-interchange format easy for humanbeings to read and write and simple for machines to parse and generate.
+
+> Please initialize the NPM first by using the command `npm init -y`.
+
+Here's an example of an API using Node.js's built-in HTTP module.
+
+```javascript
+const http = require('http');
+const data = {
+    name: "Node.js",
+    type: "Runtime",
+    language: "JavaScript",
+}
+const server = http.createServer((req, res) => {
+    if(req.url === '/api') {
+        // A basic API endpoint at /api that returns a JSON object describing Node.js
+        res.writeHead(200, {'Content-Type': 'application/json'}); // ONLY json accepted in that it's API
+        res.end(JSON.stringify(data));
+    }
+    else {
+        // All other routes return a 404 error.
+        res.writeHead(404, {'Content-Type': 'text/plain'});
+        res.end('Not Found');
+    }
+});
+```
+
+Similar with that for web server, import the HTTP module above all. Then try to get the url we're going to request &mdash; if the url is `localhost:3000` only, it should return a not-found page with error message `Not Found`; the page will return the in-string value of `data`, the JSON object describing `Node.js` otherwise.
 
 #### Common JavaScript Functions
 
