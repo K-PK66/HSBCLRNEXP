@@ -352,6 +352,10 @@ Now combine both `GET` and `POST` functions together as [a single file](https://
 
 Check the files as answers from [the link](https://github.com/K-PK66/HSBCLRNEXP/tree/main/Neueda%20Core%20Tech%20Training/OFLLRNEXPSMPL/get_post_rest_api_practice).
 
+#### GET & POST REST API, Integrated with MySQL
+
+> Please read [notes for SQL](https://github.com/K-PK66/HSBCLRNEXP/raw/refs/heads/main/Neueda%20Core%20Tech%20Training/SQL%20skills/noteSQL.md) first to acquire a proper command of MySQL before digging into this section.
+
 #### Common JavaScript Functions
 
 | Function             | Category        | Description                                              | Example Usage                     |
