@@ -78,6 +78,26 @@ NodeJS uses Google V8 Javascript Engine &mdash; its architecture is event driven
 
 To install NodeJS, download files for all OSs from [the official site for stable version](https://nodejs.org/en/download).
 
+```json
+// package.json
+{
+    "name": "jsDemo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Gu",
+    "license": "ISC",
+    "description": ""
+}
+```
+
+### Basic NodeJS
+
+#### Hello World, From NodeJS
+
 #### Common JavaScript Functions
 
 | Function             | Category        | Description                                              | Example Usage                     |
