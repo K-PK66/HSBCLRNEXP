@@ -127,39 +127,46 @@ server.listen(PORT, () => {
 ```
 
 > Convention has it that `PORT`, the variable standing for the server port, should be **all-capped**. To mention a variable in a string to output, use `${variable_name}` inside **backsticks** (rather than quotes).
+> Do **NOT** break line before & after `=>`, the *equal to* sign.
 
 Run codes combining the 3 steps above and check `http://localhost:3000` as instructed by the terminal. The site will feature a message saying `Hello from node.js`, meaning that the JS file has been completely configured.
 
 > Refreshing the website will **NOT** change anything in the page &mdash; you need to restart the server first after modification to the JS file by stop running the file-running in terminal. To avoid the problem, try install `nodemon` by command `npm install -g nodemon` in terminal &mdash; it will make corresponding changes to the server when changes are made in JS file itself.
 
-**Step 4** &mdash; create HTML page. Suppose the page to create is `index.html`.
+For *Step 2* above, if we are to read files from HTML (suppose it's `index.html`) and give response to the port we previously mentioned, a JS file should follow the steps below.
 
-**Step 5** &mdash; connect the HTML page with NodeJS.
+**Step 2.1** &mdash; create HTML page. Suppose the page to create is `index.html`.
+
+**Step 2.2** &mdash; connect the HTML page with NodeJS.
 
 ```javascript
 const path = require('path');
 ```
 
-**Step 6** &mdash; connect to path.
+**Step 2.3** &mdash; connect to path.
 
 ```javascript
 const filePath = path.join(__dirname, 'index.html');
 ```
 
-**Step 7** &mdash; read file stream.
+**Step 2.4** &mdash; read file stream.
 
 ```javascript
 const fs = require('fs');
 ```
 
-**Step 8** &mdash; read file.
+**Step 2.5** &mdash; create the `server` and read file.
 
 ```javascript
-fs.readFile(filePath, (error, content) => {
-    res.writeHead(200, {'Content-Type', 'text/html'}); // text/json is also acceptable
-    res.end(content);
+const server = http.createServer((req, res) => {
+    fs.readFile(filePath, (error, content) => {
+        res.writeHead(200, {'Content-Type': 'text/html'}); // text/json is also acceptable, basing on the file type
+        res.end(content);
+    });
 });
 ```
+
+Then return to *Step 3* above. The localhost page will feature `index.html`, the HTML file we expect.
 
 #### Common JavaScript Functions
 
