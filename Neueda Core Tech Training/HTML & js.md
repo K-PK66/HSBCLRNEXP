@@ -294,6 +294,39 @@ We can clearly figure out that we need to add or remove users in the REST API ca
 
 #### POST, the Operation for HTML's Sending
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head><!-- ... --></head>
+    <body>
+        <script>
+            addUserForm.addEventListener('submit', function(e){
+                // e for event.
+                e.preventDefault(); // prevent the default form submission behavior
+                // Read the data from the input box
+                const name = username.value;
+                if(!name) return; // if no name (name is null), do not submit anything
+                // Post name to API...
+                fetch('/users', {
+                    method: 'POST', // clarify the method as POST to avoid mistaking it as GET by system
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name }) // send the name in JSON as string
+                })
+                .then (res => res.json())
+                .then (() => {
+                    username.value=''; // Clear the input field after addings
+                    getAllUsers(); // refresh the user list after adding a new user
+                })
+            });
+        </script>
+    </body>
+</html>
+```
+
+The page `localhost:3000`, up to now, will be able to add new user to the list of users we fetched in the previous chapter.
+
 #### Common JavaScript Functions
 
 | Function             | Category        | Description                                              | Example Usage                     |
