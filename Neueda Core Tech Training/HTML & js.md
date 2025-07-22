@@ -327,6 +327,14 @@ We can clearly figure out that we need to add or remove users in the REST API ca
 
 The page `localhost:3000`, up to now, will be able to add new user to the list of users we fetched in the previous chapter.
 
+> **Practice:**
+>
+> 1. Develop an API to store movie information in JSON format.
+> 2. Develop an HTML page to obtain movie info from the API.
+> 3. Develop an HTML form to submit movie info to API and then show the entire list on the page.
+
+Check the files as answers from [the link]().
+
 #### Common JavaScript Functions
 
 | Function             | Category        | Description                                              | Example Usage                     |

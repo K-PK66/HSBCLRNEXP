@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using API</title>
+</head>
+
+<body>
+    <h1>List of movies</h1>
+    <ul id="movieList"></ul>
+    <h1>Add a new movie</h1>
+    <form id="addMovieForm">
+        <table style="text-align: center;">
+            <tr>
+                <td><input type="text" id="movieName" placeholder="Enter the movie name" required></td>
+                <td><input type="text" id="movieYear" placeholder="Enter the roadshow year" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Confirm</button></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        // run as js, not as html in node terminal
+        const movieList = document.getElementById('movieList');
+        const movieForm = document.getElementById('addMovieForm');
+        const movieName = document.getElementById('movieName');
+        const movieYear = document.getElementById('movieYear');
+
+        // Connect to API...
+        function getAllMovies() {
+            fetch('/movies')
+                .then(res => res.json()) // get the string file as json
+                .then(movies => {
+                    movieList.innerHTML = '';
+                    // Loop. Think about what can be taken as element index
+                    movies.forEach(movie => {
+                        const li = document.createElement('li');
+                        // Think about li means -
+                        // abbr. of a list item.
+                        li.textContent = movie.name+ ' (' + movie.year + ')';
+                        movieList.appendChild(li);
+                    });
+                })
+        }
+        getAllMovies();
+        addMovieForm.addEventListener('submit', function (e) {
+            // e for event.
+            e.preventDefault(); // prevent the default form submission behavior
+            // Read the data from the input box
+            const name = movieName.value;
+            const year = movieYear.value;
+            if (!name || !year) return; // if no name (name is null), do not submit anything
+            // Post name to API...
+            fetch('/movies', {
+                method: 'POST', // clarify the method as POST to avoid mistaking it as GET by system
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, year }) // send the name in JSON as string
+            })
+                .then(res => res.json())
+                .then(() => {
+                    movieName.value = '';
+                    movieYear.value = '';
+                    getAllMovies();
+                })
+        });
+    </script>
+</body>
+
+</html>
