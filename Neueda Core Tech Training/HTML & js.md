@@ -76,7 +76,7 @@ Javascript was largely a technology used in the client side elements of web appl
 
 NodeJS uses Google V8 Javascript Engine &mdash; its architecture is event driven and the I/O can be asynchronous, which is ideal for building ***scalable*** and performant Web applications. The framework allows you to create additional libraries and then these can be shared and managed using the **Node Package Manager** (or **NPM**).
 
-To install NodeJS, download files from [the official site for stable version](https://nodejs.org/en/download/stable).
+To install NodeJS, download files for all OSs from [the official site for stable version](https://nodejs.org/en/download).
 
 #### Common JavaScript Functions
 

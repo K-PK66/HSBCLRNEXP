@@ -44,7 +44,7 @@
             var password = document.getElementById("pwd").value;
             var confirmPassword = document.getElementById("confirm-pwd").value;
 
-            let valid = true;
+            var valid = true;
 
             // Validate required fields
             if (username === "" || email === "" || password === "" || confirmPassword === "") {
@@ -76,7 +76,7 @@
 </head>
 
 <body>
-    <h1>User Registration　ユーザー登録</h1>
+    <h1>User Registration</h1>
     <form action="register.html" method="get" onsubmit="return validateForm();">
         <table align="center">
             <tr>
