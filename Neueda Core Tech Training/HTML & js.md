@@ -216,22 +216,27 @@ RESTful APIs can be easily created via Express, example given in the code block 
 > Use command `npm install express` above all.
 
 ```javascript
+'use strict';
+
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const path = require('path');
 
 // data, in-memory
 let users = [
-    {id: 1, name: 'John Doe'},
-    {id: 2, name: 'Jane Smith'},
-    {id: 3, name: 'Alice Johnson'}
-]
+    { id: 1, name: 'John Doe' },
+    { id: 2, name: 'Jane Smith' },
+    { id: 3, name: 'Alice Johnson' }
+];
 
 // middleware to parse JSON bodies
 app.use(express.json());
+// mandatory step - path for html
+app.use(express.static(path.join(__dirname, 'public')));
 // GET endpoint to retrieve all users
 app.get('/users', (req, res) => {
-    res.json(users); // transforming the data to JSON
+    res.json(users);
 });
 // POST endpoint to add a new user
 app.post('/users', (req, res) => {
@@ -247,6 +252,47 @@ The page will display `Cannot GET /` on `localhost:3000` and `[{"id":1,"name":"J
 > Think about code blocks for JSON API and REST API. Why is the data type different?
 
 We can clearly figure out that we need to add or remove users in the REST API case. That's why we drop `const` (constant) and pick `let` to define the variable.
+
+#### GET, the Operation for HTML's Fetching
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- ... -->
+    </head>
+    <body>
+        <h1>List of users</h1>
+        <ul id="userlist"></ul>
+        <script>
+            // run as js, not as html in node terminal
+            const userlist = document.getElementById('userlist');
+            const userForm = document.getElementById('addUserForm');
+            const username = document.getElementById('username');
+
+            // Connect to API...
+            function getAllUsers(){
+                fetch('/users')
+                .then(res => res.json()) // get the string file as json
+                .then(users => {
+                    userlist.innerHTML = '';
+                    // Loop. Think about what can be taken as element index
+                    users.forEach(u => {
+                        const li = document.createElement('li');
+                        // Think about li means -
+                        // abbr. of a list item.
+                        li.textContent = u.name;
+                        userlist.appendChild(li);
+                    });
+                })
+            }
+            getAllUsers();
+        </script>
+    </body>
+</html>
+```
+
+#### POST, the Operation for HTML's Sending
 
 #### Common JavaScript Functions
 
