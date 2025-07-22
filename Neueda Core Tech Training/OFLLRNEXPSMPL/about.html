@@ -11,7 +11,7 @@ body{
     color: white;
 }
 img{
-    width: 50%;
+    width: 500px;
     float: right;
 }
 </style>
@@ -19,16 +19,22 @@ img{
 window.onload = function() {
     document.body.style.backgroundColor = "seagreen";
 };
+function imgBig(img){
+	img.style.width = 800;
+}
+function imgSmall(img){
+	img.style.width = 500;
+}
 </script>
 <title>Javascript & HTML Test Webpage</title>
 </head>
 <body>
 <h1>About Us</h1>
-<img src="https://railgallery.ru/photo/02/86/66/286664.jpg" alt="SS9"/>
+<img src="images/286664.jpg" alt="SS9" onmouseover="imgBig(this)" onmouseout="imgSmall(this)"/>
 <p>Xi'an Metro (Loop) Line 8, also named Xi'an Metro Line 8 or Xi'an Metro Loop Line, is a loop line of Xi'an Metro built in 2024.</p>
-<div style="float: right;">
-    <a href="register.html" style="color: white;">Sign Up Now　ユーザー登録</a><br>
-    <a href="infoRecord.html" style="color: white;">Information Record　情報レコード</a><br>
+<div style="float: left;">
+    <a href="register.html" style="color: white;">Sign Up Now</a><br>
+    <a href="infoRecord.html" style="color: white;">Information Record</a><br>
 </div>
 </body>
 </html>
