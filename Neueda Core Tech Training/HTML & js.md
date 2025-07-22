@@ -216,6 +216,7 @@ RESTful APIs can be easily created via Express, example given in the code block 
 > Use command `npm install express` above all.
 
 ```javascript
+// index.js
 'use strict';
 
 const express = require('express');
@@ -247,15 +248,20 @@ app.post('/users', (req, res) => {
 });
 ```
 
-The page will display `Cannot GET /` on `localhost:3000` and `[{"id":1,"name":"John Doe"},{"id":2,"name":"Jane Smith"},{"id":3,"name":"Alice Johnson"}]` on `localhost:3000/users`.
+The page will display `Cannot GET /` on `localhost:3000` and `[{"id":1,"name":"John Doe"},{"id":2,"name":"Jane Smith"},{"id":3,"name":"Alice Johnson"}]` on `localhost:3000/users` in that the page only provides API services in `/users`.
 
 > Think about code blocks for JSON API and REST API. Why is the data type different?
 
 We can clearly figure out that we need to add or remove users in the REST API case. That's why we drop `const` (constant) and pick `let` to define the variable.
 
-#### GET, the Operation for HTML's Fetching
+#### GET, the Request for HTML's Fetching
+
+To make the API we created in the past chapter, we should create `index.html` in `public` folder &mdash; the Javascript code has set `public` as a static resource directory, and Express will look for `public/index.html` the file by default therefore.
+
+Now think about how HTML can get information from the backend API &mdash; take the HTML document below as an example, basing on `index.js` in the previous chapter. We can use `fetch('/users')` to send a `GET` request to `/users` endpoint of **the server** in pursuit of users' information; The response will be encoded in JSON format. Then analyze the data of users we received by traverse `users`, the array, to get every element in the array (a.k.a. List Item or `li`) and add them to the list of the frontend page.
 
 ```html
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -265,7 +271,6 @@ We can clearly figure out that we need to add or remove users in the REST API ca
         <h1>List of users</h1>
         <ul id="userlist"></ul>
         <script>
-            // run as js, not as html in node terminal
             const userlist = document.getElementById('userlist');
             const userForm = document.getElementById('addUserForm');
             const username = document.getElementById('username');
@@ -273,14 +278,11 @@ We can clearly figure out that we need to add or remove users in the REST API ca
             // Connect to API...
             function getAllUsers(){
                 fetch('/users')
-                .then(res => res.json()) // get the string file as json
+                .then(res => res.json())
                 .then(users => {
                     userlist.innerHTML = '';
-                    // Loop. Think about what can be taken as element index
                     users.forEach(u => {
                         const li = document.createElement('li');
-                        // Think about li means -
-                        // abbr. of a list item.
                         li.textContent = u.name;
                         userlist.appendChild(li);
                     });
@@ -292,13 +294,26 @@ We can clearly figure out that we need to add or remove users in the REST API ca
 </html>
 ```
 
+The bold word, *the server*, in the paragraph above the code block, also highlights a fact that **one should run the Javascript file before we open HTML file for preview** &mdash; it is necessary to fetch data from the server we just started by NodeJS.
+
 #### POST, the Operation for HTML's Sending
 
+> Suppose an additional occasion where we need to add some names of users to the list we have got in the section above. How can we send things to API?
+
+Beyond doubts, we need to send the data of input upon a user click a button to add itself to the list. The signal that button sends after click can be taken as a ***event*** &mdash; we can keep *listening*, waiting for the occurence of the event, and take actions once the event-signal emerged.
+
+Take the code block below as example. We first get what the user input in the text box, and raise an HTTP `POST` request which targets at `/users` and has claimed its content type as JSON to the server via `fetch`. The server then add the user to the in-memory array and return status code `201` with the new user as an object via `app.post(/users)`. The function sends the user's name in string format afterwards &mdash; then it clears the input field upon the adding's completion. The user list will be refreshed after the input field is cleared.
+
 ```html
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
     <head><!-- ... --></head>
     <body>
+        <form id="addUserForm">
+            <input type="text" id="username" placeholder="Enter username" required>
+            <button type="submit">Add User</button>
+        </form>
         <script>
             addUserForm.addEventListener('submit', function(e){
                 // e for event.
@@ -325,7 +340,9 @@ We can clearly figure out that we need to add or remove users in the REST API ca
 </html>
 ```
 
-The page `localhost:3000`, up to now, will be able to add new user to the list of users we fetched in the previous chapter.
+> `POST` request should use `fetch` with clarification of its type in avoidance of being mistaken as `GET`.
+
+Now combine both `GET` and `POST` functions together as [a single file](https://github.com/K-PK66/HSBCLRNEXP/raw/refs/heads/main/Neueda%20Core%20Tech%20Training/OFLLRNEXPSMPL/rest_api_demo/public/index.html). The page `localhost:3000`, up to now, will be able to add new user to the list of users we fetched in the previous chapter and will have been capable of displaying the live update.
 
 > **Practice:**
 >
@@ -333,7 +350,7 @@ The page `localhost:3000`, up to now, will be able to add new user to the list o
 > 2. Develop an HTML page to obtain movie info from the API.
 > 3. Develop an HTML form to submit movie info to API and then show the entire list on the page.
 
-Check the files as answers from [the link]().
+Check the files as answers from [the link](https://github.com/K-PK66/HSBCLRNEXP/tree/main/Neueda%20Core%20Tech%20Training/OFLLRNEXPSMPL/get_post_rest_api_practice).
 
 #### Common JavaScript Functions
 
