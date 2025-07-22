@@ -196,14 +196,57 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify(data));
     }
     else {
-        // All other routes return a 404 error.
+        // All other routes return a 404 error
         res.writeHead(404, {'Content-Type': 'text/plain'});
         res.end('Not Found');
     }
 });
 ```
 
-Similar with that for web server, import the HTTP module above all. Then try to get the url we're going to request &mdash; if the url is `localhost:3000` only, it should return a not-found page with error message `Not Found`; the page will return the in-string value of `data`, the JSON object describing `Node.js` otherwise.
+Similar with that for web server, import the HTTP module above all. Then try to get the URL we're going to request &mdash; if the URL is `http://localhost:3000` only, it should return a not-found page with error message `Not Found`; the page will return the in-string value of `data`, the JSON object describing `Node.js` otherwise.
+
+In other words, as is implied by the code block above, the API's URL will be `http://localhost:3000/api`.
+
+#### REST API, Using Express
+
+Express is a web application framework for NodeJS that simplifies the process of building web servers and APIs by providing a set of features and utilities for handling HTTP requests, routing, middleware, etc.
+
+RESTful APIs can be easily created via Express, example given in the code block below.
+
+> Use command `npm install express` above all.
+
+```javascript
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// data, in-memory
+let users = [
+    {id: 1, name: 'John Doe'},
+    {id: 2, name: 'Jane Smith'},
+    {id: 3, name: 'Alice Johnson'}
+]
+
+// middleware to parse JSON bodies
+app.use(express.json());
+// GET endpoint to retrieve all users
+app.get('/users', (req, res) => {
+    res.json(users); // transforming the data to JSON
+});
+// POST endpoint to add a new user
+app.post('/users', (req, res) => {
+    const newUser = req.body;
+    newUser.id = users.length + 1; // simple ID assignment
+    users.push(newUser);
+    res.status(201).json(newUser);
+});
+```
+
+The page will display `Cannot GET /` on `localhost:3000` and `[{"id":1,"name":"John Doe"},{"id":2,"name":"Jane Smith"},{"id":3,"name":"Alice Johnson"}]` on `localhost:3000/users`.
+
+> Think about code blocks for JSON API and REST API. Why is the data type different?
+
+We can clearly figure out that we need to add or remove users in the REST API case. That's why we drop `const` (constant) and pick `let` to define the variable.
 
 #### Common JavaScript Functions
 
