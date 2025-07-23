@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const path = require('path');
 
 const app = express();
@@ -10,7 +10,7 @@ const port = 3000;
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Gu20020606',
+    password: '528203982Way',
     database: 'myapp'
 });
 

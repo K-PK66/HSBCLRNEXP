@@ -376,7 +376,9 @@ Use the same approach to call `mysql` and `body-parser` in Javascript. Then conn
 
 We are also supposed to convert what we have got to JSON via `bodyParser` of middleware. We can ask the server identify different methods of data-processing (like `GET`, `PUT`, `POST` and `DELETE`) by recognizing whether there's some additional information and how the bonus info may look like.
 
-See the matching Javascript file by [this link]().
+See the matching Javascript file by [this link](https://github.com/K-PK66/HSBCLRNEXP/raw/refs/heads/main/Neueda%20Core%20Tech%20Training/OFLLRNEXPSMPL/rest_api_sql/index.js).
+
+> Type command `npm uninstall mysql` and `npm install mysql2` if the Javascript file reported an error when running.
 
 #### Common JavaScript Functions
 
