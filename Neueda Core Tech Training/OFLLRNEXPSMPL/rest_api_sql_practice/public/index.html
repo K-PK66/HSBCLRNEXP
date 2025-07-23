@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>API with MySQL Practice</title>
+</head>
+
+<body>
+    <center>
+        <h1>Movie list</h1>
+    </center>
+    <hr>
+    <h2>Movies</h2>
+    <ul id="movielist"></ul>
+    <hr>
+    <h2>Add user</h2>
+    <form id="addMovieForm">
+        <table>
+            <tr>
+                <td><input type="text" id="name" name="name" required placeholder="Film Name"></td>
+                <td><input type="text" id="year" name="year" required placeholder="Year of roadshow"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Add Movie</button></td>
+            </tr>
+            
+        </table>
+    </form>
+    <script>
+        const movielist = document.getElementById('movielist');
+        const addMovieForm = document.getElementById('addMovieForm');
+        const nameInput = document.getElementById('name');
+        const yearInput = document.getElementById('year');
+        // Fetch users for display
+        function getAllMovies() {
+                fetch('/movies')
+                    .then(res => res.json())
+                    .then(movies => {
+                        movielist.innerHTML = '';
+                        movies.forEach(movie => {
+                            const li = document.createElement('li');
+                            li.textContent = movie.title + ' (' + movie.yearOfRoadshow + ')';
+                            movielist.appendChild(li);
+                        });
+                    });
+        }
+        // Add a new user
+        addMovieForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = nameInput.value.trim();
+            const year = yearInput.value.trim();
+            if (name && year) {
+                fetch("/movies", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name,year })
+                })
+                    .then(res => res.json())
+                    .then(movie => {
+                        const li = document.createElement('li');
+                        li.innerHTML =
+                            `[New (${movie.id})] - ${movie.title} (${movie.yearOfRoadshow}) <button onclick="updateMovieName(${movie.id}, '${movie.name}')">Update Name</button> <button onclick="updateMovieYear(${movie.id}, ${movie.year})">Update roadshow year</button> <button onclick="deleteMovie(${movie.id})">Delete</button>`;
+                        // li.textContent=user.name;
+                        movielist.appendChild(li);
+                        nameInput.value = '';
+                        yearInput.value = '';
+                    })
+                    .catch(err => console.error('Error adding movie:', err));
+            }
+        });
+        // Update existing user
+        function updateMovieName(id, currentTitle) {
+                const newTitle = prompt("New title:", currentTitle);
+                if (!newTitle) return;
+                fetch(`/movies/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title: newTitle }) // 使用正确字段
+                }).then(() => getAllMovies());
+            }
+
+        function updateMovieYear(id, currentYear) {
+            const newYear = prompt("Correct year:", currentYear);
+            if (!newYear) return;
+            fetch(`/movies/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ yearOfRoadshow: newYear }) // 使用正确字段
+            }).then(() => getAllMovies());
+        }
+        // Delete a user
+        function deleteMovie(movieId) {
+                fetch(`/movies/${movieId}`, {  // 修改为/movies
+                    method: 'DELETE'
+                }).then(() => getAllMovies());
+            }
+        getAllMovies();
+    </script>
+</body>
+
+</html>
