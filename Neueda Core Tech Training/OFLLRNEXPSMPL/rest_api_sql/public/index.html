@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>API with MySQL demo</title>
+    </head>
+    <body>
+        <center>
+            <h1>User list</h1>
+        </center>
+        <hr>
+        <h2>Users</h2>
+        <ul id="userlist"></ul>
+        <hr>
+        <h2>Add user</h2>
+        <form id="addUserForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+            <button type="submit">Add User</button>
+        </form>
+        <script>
+            const userList = document.getElementById('userlist');
+            const addUserForm = document.getElementById('addUserForm');
+            const nameInput = document.getElementById('name');
+
+            // Fetch users for display
+            function getAllUsers(){
+                fetch('/users')
+                    .then(response => response.json())
+                    .then(users => {
+                        userList.innerHTML = '';
+                        users.forEach(user => {
+                            const li = document.createElement('li');
+                            li.textContent = user.name;
+                            userList.appendChild(li);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching users:', error));
+            }
+            // Add a new user
+            function addUser(){
+
+            }
+            // Update existing user
+            function updateUser(){
+
+            }
+            // Delete a user
+            function deleteUser(){
+                
+            }
+            getAllUsers();
+        </script>
+    </body>
+</html>

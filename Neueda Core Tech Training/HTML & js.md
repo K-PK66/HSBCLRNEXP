@@ -356,6 +356,28 @@ Check the files as answers from [the link](https://github.com/K-PK66/HSBCLRNEXP/
 
 > Please read [notes for SQL](https://github.com/K-PK66/HSBCLRNEXP/raw/refs/heads/main/Neueda%20Core%20Tech%20Training/SQL%20skills/noteSQL.md) first to acquire a proper command of MySQL before digging into this section.
 
+Think about the files before the Practice of previous chapter &mdash; it's possible to connect the HTML file with database created by MySQL when listing the users.
+
+> Use `npm install express mysql body-parser` the command in bash to enable MySQL.
+
+Beyond no doubt, the connection should feature API, HTML and MySQL database. Suppose there have been a SQL file as below already, now let's focus on how to make the connection.
+
+```sql
+CREATE DATABASE IF NOT EXISTS myApp;
+USE myApp;
+CREATE TABLE IF NOT EXISTS users(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+INSERT INTO users(name) VALUES ('Jack');
+```
+
+Use the same approach to call `mysql` and `body-parser` in Javascript. Then connect the database after clarifying the username and password to the MySQL server for database &mdash; error message should pop up when the connection fails.
+
+We are also supposed to convert what we have got to JSON via `bodyParser` of middleware. We can ask the server identify different methods of data-processing (like `GET`, `PUT`, `POST` and `DELETE`) by recognizing whether there's some additional information and how the bonus info may look like.
+
+See the matching Javascript file by [this link]().
+
 #### Common JavaScript Functions
 
 | Function             | Category        | Description                                              | Example Usage                     |
