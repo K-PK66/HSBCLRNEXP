@@ -10,14 +10,14 @@ const app = express();
 const PORT = 3000;
 
 // Middleware to serve static files
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoint to get a joke
 app.get('/joke', async (req, res) => {
   try{
-    const response = await fetch(); //gets the data from the API
+    const response = await fetch('https://v2.jokeapi.dev/joke/Programming?type=single'); //gets the data from the API
     // read the data into the joketext below
-    const joketext = await response.json('https://v2.jokeapi.dev/joke/Programming?type=single');
+    const joketext = await response.json();
     //Send this joketext into res (final response to the client)
     res.json(joketext);
   }
