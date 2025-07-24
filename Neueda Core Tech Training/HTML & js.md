@@ -382,6 +382,10 @@ See the matching Javascript file by [this link](https://github.com/K-PK66/HSBCLR
 
 The HTML file can be reached by [this link](https://github.com/K-PK66/HSBCLRNEXP/raw/refs/heads/main/Neueda%20Core%20Tech%20Training/OFLLRNEXPSMPL/rest_api_demo/public/index.html). It can be checked that there will be two buttons saying `Update` and `Delete` for every entry we added &mdash; both of them can be used only once in that the HTML document will call `getAllUsers()` the function after the `update` action, which will make a local re-query on SQL.
 
+> **Practice:** try to replace in-memory data with SQL database and enable buttons to update & delete information of an entry for the movie list webpage you have made in the previous chapter.
+
+The answer can be reached from [this link](https://github.com/K-PK66/HSBCLRNEXP/tree/main/Neueda%20Core%20Tech%20Training/OFLLRNEXPSMPL/rest_api_sql_practice).
+
 #### Common JavaScript Functions
 
 | Function             | Category        | Description                                              | Example Usage                     |

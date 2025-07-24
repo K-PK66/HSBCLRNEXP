@@ -37,6 +37,35 @@ app.get('/movies', (req, res) => {
         res.json(results);
     });
 });
+// GET to search movies
+app.get('/movies/search', (req, res) => {
+    const name = req.query.name;
+    const year = req.query.year;
+    
+    if (!name && !year) {
+        return res.json([]);
+    }
+    
+    let sql = 'SELECT * FROM movies WHERE 1=1';
+    const params = [];
+    
+    if (name) {
+        sql += ' AND title LIKE ?';
+        params.push(`%${name}%`);
+    }
+    
+    if (year) {
+        sql += ' AND yearOfRoadshow = ?';
+        params.push(year);
+    }
+    
+    db.query(sql, params, (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database query failed' });
+        }
+        res.json(results);
+    });
+});
 // POST (can be taken as INSERT) a new user
 app.post('/movies', (req, res) => {
     const { name, year } = req.body; // 获取两个参数
@@ -60,7 +89,7 @@ app.post('/movies', (req, res) => {
 // UPDATE an existing user
 app.put('/movies/:id', (req, res) => {
     const { id } = req.params;
-    const { title, yearOfRoadshow } = req.body; // 使用正确字段名
+    const { title, yearOfRoadshow } = req.body;
     
     if (!title && !yearOfRoadshow) {
         return res.status(400).json({ error: 'Title or Year is required' });

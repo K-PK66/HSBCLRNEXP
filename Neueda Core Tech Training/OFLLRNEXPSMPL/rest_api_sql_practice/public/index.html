@@ -5,29 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>API with MySQL Practice</title>
+    <style>
+        button{
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: auto;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        ul#movielist{
+            list-style-type: initial;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
     <center>
         <h1>Movie list</h1>
+        <h3>Search</h3>
+        <form id="searchMovieForm">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" id="nameSearch" name="nameSearch" placeholder="Search Film Name...">
+                    </td>
+                    <td>
+                        <input type="text" id="yearSearch" name="yearSearch" placeholder="Search Year...">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit">Search</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <h3>Add to list</h3>
+        <form id="addMovieForm">
+            <table>
+                <tr>
+                    <td><input type="text" id="name" name="name" required placeholder="Film Name"></td>
+                    <td><input type="text" id="year" name="year" required placeholder="Year of roadshow"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><button type="submit">Add Movie</button></td>
+                </tr>
+        
+            </table>
+        </form>
     </center>
     <hr>
-    <h2>Movies</h2>
     <ul id="movielist"></ul>
-    <hr>
-    <h2>Add user</h2>
-    <form id="addMovieForm">
-        <table>
-            <tr>
-                <td><input type="text" id="name" name="name" required placeholder="Film Name"></td>
-                <td><input type="text" id="year" name="year" required placeholder="Year of roadshow"></td>
-            </tr>
-            <tr>
-                <td><button type="submit">Add Movie</button></td>
-            </tr>
-            
-        </table>
-    </form>
     <script>
         const movielist = document.getElementById('movielist');
         const addMovieForm = document.getElementById('addMovieForm');
@@ -46,6 +79,40 @@
                         });
                     });
         }
+        const searchMovieForm = document.getElementById('searchMovieForm');
+
+        searchMovieForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('nameSearch').value.trim();
+            const year = document.getElementById('yearSearch').value.trim();
+            searchMovies(name, year);
+        });
+
+        function searchMovies(name, year) {
+            if (!name && !year) {
+                movielist.innerHTML = '';
+                return;
+            }
+            let url = '/movies/search?';
+            if (name) url += `name=${encodeURIComponent(name)}&`;
+            if (year) url += `year=${encodeURIComponent(year)}`;
+
+            if (url.endsWith('&')) {
+                url = url.substring(0, url.length - 1);
+            }
+            fetch(url)
+                .then(res => res.json())
+                .then(movies => {
+                    movielist.innerHTML = '';
+                    movies.forEach(movie => {
+                        const li = document.createElement('li');
+                        li.innerHTML =
+                            `${movie.title} (${movie.yearOfRoadshow})`;
+                        movielist.appendChild(li);
+                    });
+                })
+            .catch(err => console.error('Search failed:', err));
+        }
         // Add a new user
         addMovieForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -63,7 +130,7 @@
                     .then(movie => {
                         const li = document.createElement('li');
                         li.innerHTML =
-                            `[New (${movie.id})] - ${movie.title} (${movie.yearOfRoadshow}) <button onclick="updateMovieName(${movie.id}, '${movie.name}')">Update Name</button> <button onclick="updateMovieYear(${movie.id}, ${movie.year})">Update roadshow year</button> <button onclick="deleteMovie(${movie.id})">Delete</button>`;
+                            `[New (${movie.id})] - ${movie.title} (${movie.yearOfRoadshow}) <button onclick="updateMovieName(${movie.id}, '${movie.name}')" style="background-color:yellow; color: black; border: 1px solid black">Update Name</button> <button onclick="updateMovieYear(${movie.id}, ${movie.year})" style="background-color:yellow; color: black; border: 1px solid black">Update roadshow year</button> <button onclick="deleteMovie(${movie.id})" style="background-color: red;">Delete</button>`;
                         // li.textContent=user.name;
                         movielist.appendChild(li);
                         nameInput.value = '';
@@ -71,7 +138,7 @@
                     })
                     .catch(err => console.error('Error adding movie:', err));
             }
-        });
+        });        
         // Update existing user
         function updateMovieName(id, currentTitle) {
                 const newTitle = prompt("New title:", currentTitle);
@@ -79,7 +146,7 @@
                 fetch(`/movies/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title: newTitle }) // 使用正确字段
+                    body: JSON.stringify({ title: newTitle })
                 }).then(() => getAllMovies());
             }
 
@@ -89,12 +156,12 @@
             fetch(`/movies/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ yearOfRoadshow: newYear }) // 使用正确字段
+                body: JSON.stringify({ yearOfRoadshow: newYear })
             }).then(() => getAllMovies());
         }
         // Delete a user
         function deleteMovie(movieId) {
-                fetch(`/movies/${movieId}`, {  // 修改为/movies
+                fetch(`/movies/${movieId}`, {
                     method: 'DELETE'
                 }).then(() => getAllMovies());
             }
