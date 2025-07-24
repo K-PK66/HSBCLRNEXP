@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bored API Practice</title>
+</head>
+
+<body>
+    <h1>Find Sth. to Do</h1>
+    <!-- Button to call the async get function from API -->
+    <button id="inspire" onclick="getJob()">Feel bored?</button>
+    <p id="inspirationDisplay"></p>
+    <script>
+        async function getJob() {
+            const response = await fetch('/act');
+            const data = await response.json();
+            let actText = '';
+            actText = data.activity;
+            document.getElementById('inspirationDisplay').innerHTML = actText+'.';
+        }
+    </script>
+</body>
+
+</html>
